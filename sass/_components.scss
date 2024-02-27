@@ -1,0 +1,161 @@
+%MARGIN {
+  margin: 0.7rem 1.9rem;
+}
+
+@mixin Detail($color) {
+  display: flex;
+  gap: 1.3rem;
+  align-items: center;
+
+  &:not(:last-child) {
+    margin-bottom: 0.7rem;
+  }
+
+  &::before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: $color;
+  }
+
+  & div {
+    display: inline-block;
+    width: 90%;
+    text-align: start;
+  }
+}
+
+.line-break {
+  margin: 0.9rem 1.9rem;
+  display: block;
+  border-top: 1px solid $color-neutral-white;
+}
+
+.image {
+  width: 100%;
+  object-fit: cover;
+  margin-bottom: 1.3rem;
+
+  @media only screen and (min-width: $bp-small) {
+    border-radius: 1.3rem;
+    width: calc(100% - 3.8rem);
+    margin: 1.9rem auto;
+  }
+}
+
+.preparation {
+  @extend %MARGIN;
+  background-color: $color-neutral-rose-white;
+  background-blend-mode: overlay;
+  border-radius: 0.5rem;
+  padding: 1.3rem;
+
+  &__details {
+    margin: 0.7rem 1.3rem;
+    color: $color-neutral-wenge-brown;
+    font-size: 1rem;
+  }
+
+  &__detail {
+    @include Detail($color-primary-dark-raspberry);
+
+    & span {
+      font-weight: 600;
+    }
+  }
+}
+
+.ingredients {
+  @extend %MARGIN;
+
+  &__details {
+    margin-top: 0.7rem;
+    margin-left: 0.7rem;
+  }
+
+  &__detail {
+    @include Detail($color-primary-nutmeg);
+  }
+}
+
+.instructions {
+  @extend %MARGIN;
+
+  &__details {
+    margin-top: 0.7rem;
+    margin-left: 1.5rem;
+  }
+
+  &__detail {
+    &:not(:last-child) {
+      margin-bottom: 0.7rem;
+    }
+
+    &::marker {
+      color: $color-primary-nutmeg;
+      font-weight: 600;
+    }
+
+    & div {
+      margin-left: 0.7rem;
+    }
+
+    & span {
+      font-weight: 600;
+    }
+  }
+}
+
+.nutrition {
+  @extend %MARGIN;
+
+  &__paragraph {
+    margin-top: 1rem;
+    margin-bottom: 0.7rem;
+  }
+
+  &__details {
+    list-style: none;
+  }
+
+  &__fact {
+    width: 100%;
+    padding: 0.9rem 0;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $color-neutral-lightgrey;
+    }
+
+    & div {
+      margin-left: 1.3rem;
+      display: grid;
+      grid-template-rows: max-content;
+      grid-template-columns: repeat(2, 4rem);
+      grid-gap: 5rem;
+      width: 70%;
+
+      @media only screen and (min-width: $bp-small) {
+        gap: 14rem;
+      }
+    }
+
+    &--value {
+      color: $color-primary-nutmeg;
+      font-weight: bold;
+    }
+  }
+}
+
+.attribution {
+  & a {
+    text-decoration: none;
+    color: $color-primary-nutmeg;
+    font-weight: 600;
+  }
+
+  @media only screen and (min-width: $bp-small) {
+    display: inline-block;
+    margin: 1.3rem auto;
+  }
+}
